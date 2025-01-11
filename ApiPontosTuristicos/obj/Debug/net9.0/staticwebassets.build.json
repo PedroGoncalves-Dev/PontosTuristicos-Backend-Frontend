@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "2VQynn4BeeRrgMX2E2EwcS+yQCQz73idl8vjNSSvLIs=",
+  "Source": "ApiPontosTuristicos",
+  "BasePath": "_content/ApiPontosTuristicos",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
