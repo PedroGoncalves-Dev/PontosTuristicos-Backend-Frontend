@@ -9,7 +9,7 @@ const MainLayout = () => {
   return (
     <>
       <NavBar />
-      <main className="min-h-[calc(100vh-3rem)]">
+      <main className="min-h-[calc(100vh-3rem)] py-7">
         <Outlet />
       </main>
       <Footer />
