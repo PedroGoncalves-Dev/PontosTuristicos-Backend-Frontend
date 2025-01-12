@@ -34,9 +34,12 @@ const PontosComponent: React.FC<{ data: PontosProps[] }> = ({ data }) => {
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="grid grid-cols-3 gap-4 p-4">
+      <div className="grid gap-4 p-4 lg:grid-cols-2 xl:grid-cols-3">
         {currentItems.map((pontos) => (
-          <Card key={pontos.id_pt} className="shadow-lg">
+          <Card
+            key={pontos.id_pt}
+            className="flex flex-col justify-between shadow-lg "
+          >
             <CardHeader>
               <CardTitle>{pontos.nome_pt}</CardTitle>
             </CardHeader>
