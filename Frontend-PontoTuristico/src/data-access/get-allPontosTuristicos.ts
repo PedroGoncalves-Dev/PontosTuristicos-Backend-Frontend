@@ -1,9 +1,9 @@
 import { api } from "@/Axios/api";
 
 interface IpontosTuristicos {
-  id: number;
-  nome: string;
-  descricao: string;
+  id_pt: number;
+  nome_pt: string;
+  descricao_pt: string;
   cidade: string;
   estado: string;
 }
