@@ -48,7 +48,7 @@ const PontosComponent: React.FC<{ data: PontosProps[] }> = ({ data }) => {
               <MapPinned color="green" size={25} />
             </CardContent>
             <CardFooter className="flex justify-end">
-              <Button className="transition-all duration-300 ease-out bg-orange-600 hover:bg-orange-700 hover:scale-105">
+              <Button className="transition-all duration-300 ease-out bg-orange-600 hover:bg-orange-700 hover:scale-105 hover:shadow-xl">
                 Detalhes
               </Button>
             </CardFooter>
