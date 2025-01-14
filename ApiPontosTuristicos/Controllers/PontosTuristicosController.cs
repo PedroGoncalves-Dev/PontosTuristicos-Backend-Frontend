@@ -31,7 +31,7 @@ public ActionResult<IEnumerable<PontoTuristico>> Get()
                          e.id_end, e.logradouro_end, e.numero_end, e.bairro_end, 
                          e.cidade_end, e.uf_end, e.cep_end, e.complemento_end 
                          FROM pontos_turisticos pt 
-                         INNER JOIN enderecos e ON pt.id_end = e.id_end";
+                         INNER JOIN enderecos e ON pt.id_end = e.id_end  order by pt.id_pt desc";
             
             var pontosTuristicos = conexao.Query<PontoTuristico, Endereco, PontoTuristico>(
                 query,
