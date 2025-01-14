@@ -59,6 +59,49 @@ public ActionResult<IEnumerable<PontoTuristico>> Get()
     }
 }
 
+[HttpGet("search")]
+public ActionResult<IEnumerable<PontoTuristico>> Search([FromQuery] string query)
+{
+    try
+    {
+        using (SqlConnection conexao = new SqlConnection(_connectionString))
+        {
+            conexao.Open();
+            var searchQuery = @"SELECT pt.id_pt, pt.nome_pt, pt.descricao_pt, pt.id_end,
+                             e.id_end, e.logradouro_end, e.numero_end, e.bairro_end, 
+                             e.cidade_end, e.uf_end, e.cep_end, e.complemento_end 
+                             FROM pontos_turisticos pt 
+                             INNER JOIN enderecos e ON pt.id_end = e.id_end
+                             WHERE pt.nome_pt LIKE @Query 
+                             OR e.cidade_end LIKE @Query
+                             OR e.uf_end LIKE @Query
+                             ORDER BY pt.id_pt DESC";
+            
+            var pontosTuristicos = conexao.Query<PontoTuristico, Endereco, PontoTuristico>(
+                searchQuery,
+                (pontoTuristico, endereco) =>
+                {
+                    pontoTuristico.Endereco = endereco;
+                    return pontoTuristico;
+                },
+                new { Query = $"%{query}%" },
+                splitOn: "id_end"
+            );
+
+            return Ok(pontosTuristicos);
+        }
+    }
+    catch (Exception ex)
+    {
+        return StatusCode(500, new ErroResponse 
+        {
+            Erro = "Erro interno do servidor",
+            Mensagem = ex.Message,
+            Timestamp = DateTime.Now
+        });
+    }
+}
+
     [HttpGet("{id}")]
     public ActionResult<PontoTuristico> Get(int id)
     {

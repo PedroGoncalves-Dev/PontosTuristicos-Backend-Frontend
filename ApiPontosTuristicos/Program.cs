@@ -27,7 +27,7 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-// Configuração da string de conexão
+
 builder.Services.AddSingleton(builder.Configuration);
 
 var app = builder.Build();
@@ -50,7 +50,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-// app.UseHttpsRedirection();
+
 app.UseAuthorization();
 app.MapControllers();
 
