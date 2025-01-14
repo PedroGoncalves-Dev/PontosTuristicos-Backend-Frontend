@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   Pagination,
   PaginationContent,
@@ -15,26 +15,74 @@ import {
   CardDescription,
   CardFooter,
 } from "@/Components/ui/card";
-import { Button } from "@/Components/ui/button";
-import { MapPinned } from "lucide-react";
 
-interface PontosProps {
-  id_pt: number;
-  nome_pt: string;
+import { Skeleton } from "@/Components/ui/skeleton";
+import DetalhesPontosTuristicos from "./detalhesPontosTuristicos";
+import { IpontosTuristicos } from "@/data-access/get-allPontosTuristicos";
+import { MapPinned } from "lucide-react";
+interface IpropsPontosTuristicos {
+  data: IpontosTuristicos[];
+  loading: boolean;
+  error: Error | null;
 }
 
-const PontosComponent: React.FC<{ data: PontosProps[] }> = ({ data }) => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 6;
+const PontosComponent = ({ data, loading, error }: IpropsPontosTuristicos) => {
+  const [paginaAtual, setpaginaAtual] = useState(1);
+  const itemsPorPagina = 6;
 
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
-  const totalPages = Math.ceil(data.length / itemsPerPage);
+  const indexDoUltimoItem = paginaAtual * itemsPorPagina;
+  const indexdoPrimeiroItem = indexDoUltimoItem - itemsPorPagina;
+  const currentItems = data.slice(indexdoPrimeiroItem, indexDoUltimoItem);
+  const totalPaginas = Math.ceil(data.length / itemsPorPagina);
+
+  const esqueletoDeLoaidng = [
+    {
+      skeleton: () => (
+        <>
+          <Skeleton className="h-[125px] w-[250px] rounded-xl" />
+          <div className="space-y-2">
+            <Skeleton className="h-4 w-[250px]" />
+            <Skeleton className="h-4 w-[200px]" />
+          </div>
+        </>
+      ),
+    },
+    {
+      skeleton: () => (
+        <>
+          <Skeleton className="h-[125px] w-[250px] rounded-xl" />
+          <div className="space-y-2">
+            <Skeleton className="h-4 w-[250px]" />
+            <Skeleton className="h-4 w-[200px]" />
+          </div>
+        </>
+      ),
+    },
+    {
+      skeleton: () => (
+        <>
+          <Skeleton className="h-[125px] w-[250px] rounded-xl" />
+          <div className="space-y-2">
+            <Skeleton className="h-4 w-[250px]" />
+            <Skeleton className="h-4 w-[200px]" />
+          </div>
+        </>
+      ),
+    },
+  ];
 
   return (
     <div className="flex flex-col gap-4">
       <div className="grid gap-4 p-4 lg:grid-cols-2 xl:grid-cols-3">
+        {loading &&
+          esqueletoDeLoaidng.map((esqueleto, index) => (
+            <div className="flex flex-col space-y-3" key={index}>
+              {esqueleto.skeleton()}
+            </div>
+          ))}
+
+        {error && <p>Não foi possivel carregar os pontos turisticos</p>}
+
         {currentItems.map((pontos) => (
           <Card
             key={pontos.id_pt}
@@ -44,13 +92,14 @@ const PontosComponent: React.FC<{ data: PontosProps[] }> = ({ data }) => {
               <CardTitle>{pontos.nome_pt}</CardTitle>
             </CardHeader>
             <CardContent className="flex items-center gap-4">
-              <CardDescription>Tupã-SP</CardDescription>
+              <CardDescription>
+                {pontos.endereco.cidade_end} - {pontos.endereco.uf_end}
+              </CardDescription>
               <MapPinned color="green" size={25} />
             </CardContent>
+
             <CardFooter className="flex justify-end">
-              <Button className="transition-all duration-300 ease-out bg-orange-600 hover:bg-orange-700 hover:scale-105 hover:shadow-xl">
-                Detalhes
-              </Button>
+              <DetalhesPontosTuristicos pontos={pontos} />
             </CardFooter>
           </Card>
         ))}
@@ -60,17 +109,17 @@ const PontosComponent: React.FC<{ data: PontosProps[] }> = ({ data }) => {
         <PaginationContent>
           <PaginationItem>
             <PaginationPrevious
-              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+              onClick={() => setpaginaAtual((prev) => Math.max(prev - 1, 1))}
               className="cursor-pointer"
-              aria-disabled={currentPage === 1}
+              aria-disabled={paginaAtual === 1}
             />
           </PaginationItem>
 
-          {Array.from({ length: totalPages }).map((_, index) => (
+          {Array.from({ length: totalPaginas }).map((_, index) => (
             <PaginationItem key={index + 1}>
               <PaginationLink
-                onClick={() => setCurrentPage(index + 1)}
-                isActive={currentPage === index + 1}
+                onClick={() => setpaginaAtual(index + 1)}
+                isActive={paginaAtual === index + 1}
                 className="cursor-pointer"
               >
                 {index + 1}
@@ -81,10 +130,10 @@ const PontosComponent: React.FC<{ data: PontosProps[] }> = ({ data }) => {
           <PaginationItem>
             <PaginationNext
               onClick={() =>
-                setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+                setpaginaAtual((prev) => Math.min(prev + 1, totalPaginas))
               }
               className="cursor-pointer"
-              aria-disabled={currentPage === totalPages}
+              aria-disabled={paginaAtual === totalPaginas}
             />
           </PaginationItem>
         </PaginationContent>
