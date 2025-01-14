@@ -62,6 +62,8 @@ code PontosTuristicos-Backend-Frontend/Frontend-PontoTuristico
    
 A API estará rodando em `http://localhost:5193`
 
+Para acessar o swagger o endereço é `http://localhost:5193/swagger/index.html`
+
 ## 🎨 Configurando o Frontend (VS Code - Janela 2)
 
 1. Instale as dependências:
