@@ -40,6 +40,20 @@ code PontosTuristicos-Backend-Frontend/Frontend-PontoTuristico
 * Se preferir, também em ApiPontosTuristicos/bancoDeDados/ esta outro arquivo scriptBanco.sql que contem todo o script pra criar um novo banco e as tabelas em sua máquina. basta abrir o sql server management studio ir em nova consulta e colar o script copiado
 * Abra o arquivo `appsettings.json`
 * Ajuste a ConnectionString para seu SQL Server
+* exemplos de ConnectionString :
+
+
+"ConnectionStrings": {
+  "DefaultConnection": "Server=PC-seu_pc\\SQLEXPRESS;Database=seu_banco;Trusted_Connection=True;TrustServerCertificate=True;"
+}
+
+
+  ou
+
+ "ConnectionStrings": {
+  "DefaultConnection": "Data Source=NB-XXX-AB12C34;Database=banco_teste_sinqia;Trusted_Connection=True;TrustServerCertificate=True;"
+}
+
 
 3. Inicie a API:
 
