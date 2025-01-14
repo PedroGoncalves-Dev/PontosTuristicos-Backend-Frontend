@@ -39,6 +39,7 @@ code PontosTuristicos-Backend-Frontend/Frontend-PontoTuristico
 * Ajuste a ConnectionString para seu SQL Server
 
 3. Inicie a API:
+
    *dotnet run*
 
    
@@ -47,9 +48,15 @@ A API estará rodando em `http://localhost:5193`
 ## 🎨 Configurando o Frontend (VS Code - Janela 2)
 
 1. Instale as dependências:
+
+
+   
 *npm install*
 
 2. Inicie o projeto:
+
+
+
 *npm run dev*
 
 
