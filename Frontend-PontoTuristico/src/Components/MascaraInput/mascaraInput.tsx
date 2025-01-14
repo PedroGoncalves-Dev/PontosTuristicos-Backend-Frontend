@@ -1,51 +1,51 @@
 import { InputMask, format } from "@react-input/mask";
+import { Control, Controller, FieldValues, Path } from "react-hook-form";
 
-import { Control, Controller } from "react-hook-form";
-import { TypeAddNovoPonto } from "../sheet-CadastrarNovoPonto/sheet-NovoPonto";
-
-interface IpropsMask {
+interface IpropsMask<T extends FieldValues> {
   mask: string;
-  name: keyof TypeAddNovoPonto;
+  name: Path<T>;
   placeholder?: string;
   className?: string;
-  control: Control<TypeAddNovoPonto>;
+  control: Control<T>;
   valor?: string;
 }
 
-const MascaraInput = ({
+function MascaraInput<T extends FieldValues>({
   mask,
   name,
   placeholder,
   className,
   control,
-  valor,
-}: IpropsMask) => (
-  <Controller
-    name={name}
-    control={control}
-    render={({ field: { onChange, value, ...field } }) => {
-      const maskOptions = { mask, replacement: { _: /\d/ } };
-      const formattedValue = value ? format(value, maskOptions) : "";
+}: IpropsMask<T>) {
+  return (
+    <Controller
+      name={name}
+      control={control}
+      render={({ field: { onChange, value, ...field } }) => {
+        const maskOptions = { mask, replacement: { _: /\d/ } };
+        const formattedValue = value
+          ? format(value.toString(), maskOptions)
+          : "";
 
-      return (
-        <InputMask
-          {...field}
-          value={formattedValue}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            // Remove caracteres não numéricos para outros campos
-            const numericValue = e.target.value.replace(/\D/g, "");
-            onChange(numericValue);
-          }}
-          mask={mask}
-          replacement="_"
-          placeholder={placeholder}
-          className={`${className}`}
-          showMask={false}
-          separate
-        />
-      );
-    }}
-  />
-);
+        return (
+          <InputMask
+            {...field}
+            value={formattedValue}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+              const numericValue = e.target.value.replace(/\D/g, "");
+              onChange(numericValue);
+            }}
+            mask={mask}
+            replacement="_"
+            placeholder={placeholder}
+            className={`${className}`}
+            showMask={false}
+            separate
+          />
+        );
+      }}
+    />
+  );
+}
 
 export default MascaraInput;
