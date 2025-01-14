@@ -43,11 +43,16 @@ code PontosTuristicos-Backend-Frontend/Frontend-PontoTuristico
 * exemplos de ConnectionString :
 
 
-  "Server=PC-seu_pc\\SQLEXPRESS;Database=seu_banco;Trusted_Connection=True;TrustServerCertificate=True;"
+"ConnectionStrings": {
+  "DefaultConnection": "Server=PC-seu_pc\\SQLEXPRESS;Database=seu_banco;Trusted_Connection=True;TrustServerCertificate=True;"
+}
+
 
   ou
 
+ "ConnectionStrings": {
   "DefaultConnection": "Data Source=NB-XXX-AB12C34;Database=banco_teste_sinqia;Trusted_Connection=True;TrustServerCertificate=True;"
+}
 
 
 3. Inicie a API:
