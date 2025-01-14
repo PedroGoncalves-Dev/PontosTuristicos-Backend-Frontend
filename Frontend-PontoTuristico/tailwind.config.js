@@ -4,6 +4,9 @@ module.exports = {
   content: ["./index.html", "./src/**/*.{ts,tsx,js,jsx}"],
   theme: {
     extend: {
+      hyphens: {
+        auto: "auto",
+      },
       container: {
         center: true,
         padding: "2rem",
