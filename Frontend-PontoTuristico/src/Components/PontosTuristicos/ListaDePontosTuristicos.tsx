@@ -30,7 +30,7 @@ interface IpropsPontosTuristicos {
 const PontosComponent = ({
   data,
   loading,
-  error,
+
   loadingPesquisa,
 }: IpropsPontosTuristicos) => {
   const [paginaAtual, setpaginaAtual] = useState(1);
@@ -79,15 +79,13 @@ const PontosComponent = ({
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="grid gap-4 p-4 lg:grid-cols-2 xl:grid-cols-3">
+      <div className="grid w-full gap-4 p-4 lg:grid-cols-2 xl:grid-cols-3">
         {loading &&
           esqueletoDeLoaidng.map((esqueleto, index) => (
             <div className="flex flex-col space-y-3" key={index}>
               {esqueleto.skeleton()}
             </div>
           ))}
-
-        {error && <p>Não foi possivel carregar os pontos turisticos</p>}
 
         {!loadingPesquisa ? (
           itemsAtuais.length > 0 ? (
@@ -112,13 +110,13 @@ const PontosComponent = ({
               </Card>
             ))
           ) : (
-            <p className="flex items-center text-slate-500">
+            <p className="flex items-center lg:col-span-2 xl:col-span-3 text-slate-500">
               Nenhum ponto turístico encontrado <Frown size={50} />
             </p>
           )
         ) : (
           esqueletoDeLoaidng.map((esqueleto, index) => (
-            <div className="flex flex-col space-y-3" key={index}>
+            <div className="flex flex-col space-y-3 " key={index}>
               {esqueleto.skeleton()}
             </div>
           ))

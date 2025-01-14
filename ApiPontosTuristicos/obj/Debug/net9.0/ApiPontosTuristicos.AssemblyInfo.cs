@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ApiPontosTuristicos")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2ebda6e3d904c03b10ce53d27262a9488b6f8229")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+16e496276d7e3b0b6c62b9f16eaac9402c905a8b")]
 [assembly: System.Reflection.AssemblyProductAttribute("ApiPontosTuristicos")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ApiPontosTuristicos")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

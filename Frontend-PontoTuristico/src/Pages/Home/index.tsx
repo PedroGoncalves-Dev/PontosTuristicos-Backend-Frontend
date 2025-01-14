@@ -28,7 +28,7 @@ const Home = () => {
           by="character"
           className="text-2xl font-bold text-center"
         >
-          Pontos turisticos
+          Pontos turísticos
         </TextAnimate>
         <Separator className="w-1/2 mx-auto my-4 " />
       </>

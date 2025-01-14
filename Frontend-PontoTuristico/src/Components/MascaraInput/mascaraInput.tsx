@@ -41,6 +41,7 @@ function MascaraInput<T extends FieldValues>({
             className={`${className}`}
             showMask={false}
             separate
+            autoComplete="off"
           />
         );
       }}

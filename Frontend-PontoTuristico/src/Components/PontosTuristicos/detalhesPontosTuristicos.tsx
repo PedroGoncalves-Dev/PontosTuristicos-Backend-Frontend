@@ -23,7 +23,9 @@ const DetalhesPontosTuristicos = ({
     {
       label: "Logradouro",
       value: pontos.endereco.logradouro_end
-        ? `${pontos.endereco.logradouro_end}, ${pontos.endereco.numero_end}`
+        ? `${pontos.endereco.logradouro_end} ${
+            pontos.endereco.numero_end ? "," : ""
+          } ${pontos.endereco.numero_end}`
         : "Não informado",
     },
     {
@@ -35,8 +37,8 @@ const DetalhesPontosTuristicos = ({
       value: pontos.endereco.cep_end || "Não informado",
     },
     {
-      label: "Complemento",
-      value: pontos.endereco.complemento_end || "Não informado",
+      label: "Referência",
+      value: pontos.endereco.referencia_end || "Não informado",
     },
   ];
   return (

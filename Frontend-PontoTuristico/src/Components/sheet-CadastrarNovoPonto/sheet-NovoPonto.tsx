@@ -114,6 +114,7 @@ const NovoPontoTuristico = () => {
         title: "Erro ao cadastrar novo ponto turístico",
         description: "Tente novamente mais tarde.",
         duration: 4000,
+        variant: "destructive",
       });
     },
   });
