@@ -28,7 +28,7 @@ code PontosTuristicos-Backend-Frontend/Frontend-PontoTuristico
 1. *No terminal do VS Code, restaure as dependências:*
 - Abra o terminal de comando no VS Code. Você pode fazer isso indo em Terminal > New Terminal ou usando o atalho ` Ctrl + shift + ' ` (aspas simples).
 - No terminal, execute o comando abaixo para instalar todas as dependências necessárias:
-  dotnet restore
+  *dotnet restore*
 
   
 2. Configure o banco de dados:
@@ -39,7 +39,7 @@ code PontosTuristicos-Backend-Frontend/Frontend-PontoTuristico
 * Ajuste a ConnectionString para seu SQL Server
 
 3. Inicie a API:
-   dotnet run
+   *dotnet run*
 
    
 A API estará rodando em `http://localhost:5193`
@@ -47,10 +47,10 @@ A API estará rodando em `http://localhost:5193`
 ## 🎨 Configurando o Frontend (VS Code - Janela 2)
 
 1. Instale as dependências:
-npm install
+*npm install*
 
 2. Inicie o projeto:
-npm run dev
+*npm run dev*
 
 
 O frontend estará disponível em `http://localhost:5173`
