@@ -23,10 +23,7 @@ import {
 import { Button } from "@/Components/ui/button";
 import { SheetClose } from "@/Components/ui/sheet";
 import React, { useEffect } from "react";
-import {
-  getCidadesDoEstado,
-  Icidades,
-} from "@/data-access/get-cidadesDoEstado";
+import { Icidades } from "@/data-access/get-cidadesDoEstado";
 import { IEstados } from "@/data-access/get-allEstados";
 import axios from "axios";
 import { RefreshCw } from "lucide-react";
@@ -191,7 +188,7 @@ const FormAddNovoPonto = ({
             name="endereco.referencia_end"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Referência de localizaçao:</FormLabel>
+                <FormLabel>Referência de localização:</FormLabel>
                 <FormControl>
                   <Textarea
                     placeholder="Digite um ponto de referência "

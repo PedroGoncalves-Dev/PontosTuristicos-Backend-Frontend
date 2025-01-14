@@ -19,20 +19,26 @@ import {
 import { Skeleton } from "@/Components/ui/skeleton";
 import DetalhesPontosTuristicos from "./detalhesPontosTuristicos";
 import { IpontosTuristicos } from "@/data-access/get-allPontosTuristicos";
-import { MapPinned } from "lucide-react";
+import { Frown, MapPinned } from "lucide-react";
 interface IpropsPontosTuristicos {
   data: IpontosTuristicos[];
   loading: boolean;
+  loadingPesquisa: boolean;
   error: Error | null;
 }
 
-const PontosComponent = ({ data, loading, error }: IpropsPontosTuristicos) => {
+const PontosComponent = ({
+  data,
+  loading,
+  error,
+  loadingPesquisa,
+}: IpropsPontosTuristicos) => {
   const [paginaAtual, setpaginaAtual] = useState(1);
   const itemsPorPagina = 6;
 
   const indexDoUltimoItem = paginaAtual * itemsPorPagina;
   const indexdoPrimeiroItem = indexDoUltimoItem - itemsPorPagina;
-  const currentItems = data.slice(indexdoPrimeiroItem, indexDoUltimoItem);
+  const itemsAtuais = data.slice(indexdoPrimeiroItem, indexDoUltimoItem);
   const totalPaginas = Math.ceil(data.length / itemsPorPagina);
 
   const esqueletoDeLoaidng = [
@@ -83,26 +89,40 @@ const PontosComponent = ({ data, loading, error }: IpropsPontosTuristicos) => {
 
         {error && <p>Não foi possivel carregar os pontos turisticos</p>}
 
-        {currentItems.map((pontos) => (
-          <Card
-            key={pontos.id_pt}
-            className="flex flex-col justify-between shadow-lg "
-          >
-            <CardHeader>
-              <CardTitle>{pontos.nome_pt}</CardTitle>
-            </CardHeader>
-            <CardContent className="flex items-center gap-4">
-              <CardDescription>
-                {pontos.endereco.cidade_end} - {pontos.endereco.uf_end}
-              </CardDescription>
-              <MapPinned color="green" size={25} />
-            </CardContent>
+        {!loadingPesquisa ? (
+          itemsAtuais.length > 0 ? (
+            itemsAtuais.map((pontos) => (
+              <Card
+                key={pontos.id_pt}
+                className="flex flex-col justify-between shadow-lg "
+              >
+                <CardHeader>
+                  <CardTitle>{pontos.nome_pt}</CardTitle>
+                </CardHeader>
+                <CardContent className="flex items-center gap-4">
+                  <CardDescription>
+                    {pontos.endereco.cidade_end} - {pontos.endereco.uf_end}
+                  </CardDescription>
+                  <MapPinned color="green" size={25} />
+                </CardContent>
 
-            <CardFooter className="flex justify-end">
-              <DetalhesPontosTuristicos pontos={pontos} />
-            </CardFooter>
-          </Card>
-        ))}
+                <CardFooter className="flex justify-end">
+                  <DetalhesPontosTuristicos pontos={pontos} />
+                </CardFooter>
+              </Card>
+            ))
+          ) : (
+            <p className="flex items-center text-slate-500">
+              Nenhum ponto turístico encontrado <Frown size={50} />
+            </p>
+          )
+        ) : (
+          esqueletoDeLoaidng.map((esqueleto, index) => (
+            <div className="flex flex-col space-y-3" key={index}>
+              {esqueleto.skeleton()}
+            </div>
+          ))
+        )}
       </div>
 
       <Pagination>

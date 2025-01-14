@@ -23,15 +23,17 @@ import { Separator } from "../ui/separator";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useToast } from "@/hooks/use-toast";
 import { api } from "@/Axios/api";
+import { UseSheetNovoPonto } from "@/Context/localizacaoNovoPonto";
 
 export type TypeAddNovoPonto = z.infer<typeof schemaAddNooPonto>;
 const NovoPontoTuristico = () => {
-  const [sheetOpen, setSheetOpen] = useState(false);
   const [estados, setEstados] = useState<IEstados[]>([]);
   const [cidades, setCidades] = useState<Icidades[]>([]);
   const [estadoSelecionado, setEstadoSelecionado] = useState("");
   const { toast } = useToast();
   const queryClient = useQueryClient();
+
+  const { localNovoPonto, setLocalNovoPonto } = UseSheetNovoPonto();
 
   const form = useForm<TypeAddNovoPonto>({
     resolver: zodResolver(schemaAddNooPonto),
@@ -105,7 +107,7 @@ const NovoPontoTuristico = () => {
 
       form.reset();
 
-      setSheetOpen(false);
+      setLocalNovoPonto(false);
     },
     onError: () => {
       toast({
@@ -121,7 +123,7 @@ const NovoPontoTuristico = () => {
   };
   return (
     <>
-      <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
+      <Sheet open={localNovoPonto} onOpenChange={setLocalNovoPonto}>
         <SheetTrigger asChild>
           <Button>
             Novo ponto turístico <Plus className="scale-110" />
@@ -133,7 +135,7 @@ const NovoPontoTuristico = () => {
               Cadastrar Novo Ponto Turístico
             </SheetTitle>
             <SheetDescription>
-              Cadastre um novo ponto turistico com as informações necessárias...
+              Cadastre um novo ponto turístico com as informações necessárias...
             </SheetDescription>
           </SheetHeader>
           <Separator className="w-1/2 mx-auto my-4" />

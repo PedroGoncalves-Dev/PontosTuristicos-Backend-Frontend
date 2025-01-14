@@ -60,7 +60,7 @@ export const schemaAddNooPonto = z
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
         message:
-          "É necessário preencher o endereço completo (logradouro, bairro e número) ou a referência",
+          "É necessário preencher o endereço completo (logradouro e bairro ) ou a referência",
         path: ["endereco.logradouro_end"],
       });
 

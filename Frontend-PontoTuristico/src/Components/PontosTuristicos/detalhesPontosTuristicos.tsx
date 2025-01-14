@@ -110,7 +110,7 @@ const DetalhesPontosTuristicos = ({
             <Button
               onClick={() =>
                 window.open(
-                  `https://maps.google.com/?q=${pontos.endereco.logradouro_end},${pontos.endereco.cidade_end},${pontos.endereco.cep_end}`
+                  `https://maps.google.com/?q=${pontos.nome_pt},${pontos.endereco.logradouro_end},${pontos.endereco.cidade_end},${pontos.endereco.cep_end}`
                 )
               }
               className="w-full bg-amber-900 hover:bg-amber-950 text-white px-6 py-3 rounded-lg font-medium shadow-md hover:shadow-xl transform hover:scale-[1.02] transition-all duration-200 flex items-center justify-center gap-2"
