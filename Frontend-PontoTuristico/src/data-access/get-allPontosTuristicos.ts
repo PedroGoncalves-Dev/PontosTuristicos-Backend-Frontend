@@ -1,11 +1,20 @@
 import { api } from "@/Axios/api";
 
-interface IpontosTuristicos {
+interface IpontosTuristicosEndereco {
+  cep_end: string;
+  logradouro_end: string;
+  numero_end: string;
+  bairro_end: string;
+  cidade_end: string;
+  uf_end: string;
+  complemento_end: string;
+  referencia_end: string;
+}
+export interface IpontosTuristicos {
   id_pt: number;
   nome_pt: string;
   descricao_pt: string;
-  cidade: string;
-  estado: string;
+  endereco: IpontosTuristicosEndereco;
 }
 
 export const getAllPontosTuristicos = async () => {
