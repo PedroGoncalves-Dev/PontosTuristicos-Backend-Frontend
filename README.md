@@ -28,6 +28,9 @@ code PontosTuristicos-Backend-Frontend/Frontend-PontoTuristico
 1. *No terminal do VS Code, restaure as dependências:*
 - Abra o terminal de comando no VS Code. Você pode fazer isso indo em Terminal > New Terminal ou usando o atalho ` Ctrl + shift + ' ` (aspas simples).
 - No terminal, execute o comando abaixo para instalar todas as dependências necessárias:
+
+
+
   *dotnet restore*
 
   
@@ -48,7 +51,8 @@ A API estará rodando em `http://localhost:5193`
 ## 🎨 Configurando o Frontend (VS Code - Janela 2)
 
 1. Instale as dependências:
-
+- Abra o terminal de comando no VS Code. Você pode fazer isso indo em Terminal > New Terminal ou usando o atalho ` Ctrl + shift + ' ` (aspas simples).
+- No terminal, execute o comando abaixo para instalar todas as dependências necessárias:
 
    
 *npm install*
