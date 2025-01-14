@@ -89,6 +89,7 @@ const FormAddNovoPonto = ({
                   <Input
                     placeholder="Digite o nome do ponto turístico"
                     {...field}
+                    max={50}
                   />
                 </FormControl>
                 <FormMessage />
@@ -175,7 +176,11 @@ const FormAddNovoPonto = ({
                 <FormItem>
                   <FormLabel>Bairro:</FormLabel>
                   <FormControl>
-                    <Input placeholder="Digite o bairro" {...field} />
+                    <Input
+                      placeholder="Digite o bairro"
+                      {...field}
+                      maxLength={50}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
