@@ -8,7 +8,7 @@ const Sobre = () => {
       <section className="prose prose-slate max-w-none">
         <div className="p-6 mb-8 bg-white rounded-lg shadow-md">
           <p className="mb-6 leading-relaxed text-gray-700">
-            Nossa aplicação é um sistema completo para gerenciamento de pontos
+            Esta aplicação é um sistema completo para gerenciamento de pontos
             turísticos, permitindo aos usuários cadastrar e visualizar
             informações detalhadas sobre locais de interesse turístico.
           </p>
