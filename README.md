@@ -91,7 +91,7 @@ O frontend estará disponível em `http://localhost:5173`
 ## 🆘 Solução de problemas comuns
 
 * **Erro de conexão com banco:** Verifique se o SQL Server está rodando e se a string de conexao esta correta
-* **Erro de CORS:** Confirme se a API está configurada para aceitar requisições do frontend
+
 * **Erro de dependências:** Delete node_modules e execute npm install novamente
 
 ## 🔧 Tecnologias utilizadas
